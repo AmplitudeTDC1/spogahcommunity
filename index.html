@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spogah Community</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#mission">Our Mission</a></li>
+          <li><a href="#events">Upcoming Events</a></li>
+          <li><a href="#membership">Membership</a></li>
+          <li><a href="#marketplace">Marketplace</a></li>
+          <li><a href="#learning">Learning Hub</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <video autoplay muted loop>
+        <source src="assets/videos/marketplace-2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="hero-content">
+        <h1>Welcome to the Spogah Community</h1>
+        <p>
+          Building a sustainable and inclusive future through shared values.
+        </p>
+        <a href="#membership" class="btn">Join Us</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="about-content">
+        <h2>About Us</h2>
+        <p>
+          At Spogah Community, we are dedicated to fostering a self-sustaining
+          and inclusive environment where every individual plays a vital role in
+          collective growth. We believe in empowering our members to contribute
+          meaningfully, ensuring that our community thrives without
+          over-reliance on external resources.
+        </p>
+        <button class="btn" onclick="openPopup()">Read More</button>
+      </div>
+    </section>
+
+    <!-- Popup Modal -->
+    <div id="aboutPopup" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>About Us</h2>
+        <p>
+          At Spogah Community, we are dedicated to fostering a self-sustaining
+          and inclusive environment where every individual plays a vital role in
+          collective growth. We believe in empowering our members to contribute
+          meaningfully, ensuring that our community thrives without
+          over-reliance on external resources. Designed to embrace diversity,
+          our community welcomes people from all walks of life, races, ages, and
+          cultural backgrounds. We provide a space where individuality is
+          celebrated, and personal and communal development go hand in hand. By
+          blending modern innovations with traditional wisdom, we create a
+          dynamic ecosystem that not only meets present needs but also lays a
+          strong foundation for future generations. We are very intentional in
+          our approach which makes us a dynamic community where our result
+          speaks for itself.
+        </p>
+      </div>
+    </div>
+
+    <!-- Mission Section -->
+    <section id="mission">
+      <div class="mission-container">
+        <div class="mission-content">
+          <h2>Our Mission</h2>
+          <p>
+            Our mission is to build a purpose-driven community where growth is
+            visible, sustainability is achieved through self-sufficiency, and
+            inclusivity allows everyone to contribute meaningfully.
+          </p>
+          <button class="btn" onclick="openMissionPopup()">Read More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popup Modal -->
+    <div id="missionPopup" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closeMissionPopup()">&times;</span>
+        <h2>Our Mission</h2>
+        <p>
+          Our mission is to build a purpose-driven community where: Growth is
+          visible and measurable for all members. Sustainability is achieved
+          through self-sufficiency and resourcefulness. Inclusivity ensures that
+          everyone has a role to play, regardless of their background. We
+          harness both traditional and modern methods to shape a progressive and
+          balanced future. Through our collective efforts, we aim to establish a
+          thriving, impactful community that empowers individuals while
+          preserving the rich legacies of the past.
+        </p>
+      </div>
+    </div>
+
+    <!-- Upcoming Events Section -->
+    <!-- Upcoming Events Section -->
+    <section id="events">
+      <div class="events-container">
+        <h2>Upcoming Events</h2>
+        <div class="events-grid">
+          <div class="event-card">
+            <img src="assets/images/community-people-1.webp" alt="Event 1" />
+            <div class="event-details">
+              <h3>Community Meetup</h3>
+              <p><strong>Date:</strong> April 15, 2025</p>
+              <p><strong>Location:</strong> Spogah Community Center</p>
+              <p>
+                Join us for a day of networking, discussions, and community
+                building.
+              </p>
+              <button class="btn">Learn More</button>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img src="assets/images/community-people-4.webp" alt="Event 2" />
+            <div class="event-details">
+              <h3>Green Sustainability Workshop</h3>
+              <p><strong>Date:</strong> May 10, 2025</p>
+              <p><strong>Location:</strong> EcoHub Auditorium</p>
+              <p>
+                Discover practical strategies for achieving self-sufficiency.
+              </p>
+              <button class="btn">Learn More</button>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img src="assets/images/community-people-5.jpg" alt="Event 3" />
+            <div class="event-details">
+              <h3>Heritage & Culture Festival</h3>
+              <p><strong>Date:</strong> June 20, 2025</p>
+              <p><strong>Location:</strong> Grand Arena</p>
+              <p>
+                Experience the richness of diverse cultures through music, art,
+                and food.
+              </p>
+              <button class="btn">Learn More</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section id="membership">
+      <div class="membership-container">
+        <h2>Join Our Community</h2>
+        <p>
+          Become a member of Spogah Community and start your journey towards
+          sustainability and growth.
+        </p>
+        <button class="btn" id="join-btn">Join Now</button>
+      </div>
+
+      <form
+        method="post"
+        name="membershipForm"
+        id="membershipForm"
+        class="form-container"
+      >
+        <button type="button" class="close-btn">&times;</button>
+
+        <h2>Membership Registration</h2>
+
+        <div class="form-group">
+          <label for="full-name">Full Name</label>
+          <input
+            type="text"
+            id="full-name"
+            name="full_name"
+            required
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            required
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="referral-code">Referee's Code (Optional)</label>
+          <input
+            type="text"
+            id="referral-code"
+            name="referral_code"
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="generated-code">Your Reference Code</label>
+          <input
+            type="text"
+            id="generated-code"
+            name="generated_code"
+            readonly
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group declaration">
+          <label>
+            <input type="checkbox" id="declaration" required />
+            <span>
+              I,
+              <strong><span id="user-name-placeholder">________</span></strong
+              >, hereby declare that the information provided above is true and
+              accurate to the best of my knowledge.
+            </span>
+          </label>
+
+          <div
+            class="g-recaptcha"
+            data-sitekey="6LebrwMrAAAAAAUtGYj_ZF2AvIIk_aR9a2XMIbYH"
+          ></div>
+        </div>
+        <input type="hidden" id="declaration-text" name="declaration-text" />
+        <button type="submit" id="submit" class="submit-btn" disabled>
+          Register
+        </button>
+      </form>
+
+      <!-- Success Modal -->
+      <div id="successModal" class="modal">
+        <div class="modal-content">
+          <h2>🎉 Registration Successful!</h2>
+          <p>Thank you! Your form has been submitted successfully.</p>
+          <button id="closeModal" class="modal-btn">OK</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section id="marketplace">
+      <h2>Marketplace</h2>
+      <p>
+        Engage in ethical trade and barter within our self-sustaining ecosystem.
+      </p>
+    </section>
+
+    <!-- Online Learning Hub Section -->
+    <section id="learning">
+      <h2>Learning Hub</h2>
+      <p>
+        Access valuable resources, courses, and training programs to develop new
+        skills.
+      </p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2>Contact Us</h2>
+      <p>Have questions? Reach out to us.</p>
+      <form>
+        <input type="text" name="name" placeholder="Your Name" required /><br />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        /><br />
+        <textarea name="message" placeholder="Your Message" required></textarea
+        ><br />
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-about">
+          <h3>About Spogah Community</h3>
+          <p>
+            A sustainable ecosystem promoting barter trade and tokenization.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="marketplace.html">Marketplace</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p>Email: info@spogahcommunity.org</p>
+          <p>Follow us on social media</p>
+          <div class="social-icons">
+            <a href="#">Facebook</a> | <a href="#">Twitter</a> |
+            <a href="#">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </body>
+</html>

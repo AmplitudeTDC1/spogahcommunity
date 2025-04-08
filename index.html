@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spogah Community</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -124,7 +125,7 @@
                 Join us for a day of networking, discussions, and community
                 building.
               </p>
-              <button class="btn">Learn More</button>
+              <button class="btn">Register</button>
             </div>
           </div>
 
@@ -137,7 +138,7 @@
               <p>
                 Discover practical strategies for achieving self-sufficiency.
               </p>
-              <button class="btn">Learn More</button>
+              <button class="btn">Register</button>
             </div>
           </div>
 
@@ -151,7 +152,7 @@
                 Experience the richness of diverse cultures through music, art,
                 and food.
               </p>
-              <button class="btn">Learn More</button>
+              <button class="btn">Register</button>
             </div>
           </div>
         </div>
@@ -166,9 +167,56 @@
           Become a member of Spogah Community and start your journey towards
           sustainability and growth.
         </p>
-        <button class="btn" id="join-btn">Join Now</button>
       </div>
 
+      <!-- Membership Plans -->
+      <div class="membership-plans">
+        <div class="plan monthly">
+          <h3>Monthly Subscription</h3>
+          <p class="price">₦5,000 worth of barter value</p>
+          <button class="select-plan" data-plan="Monthly">Select Plan</button>
+          <ul>
+            <li>✅ Eligible for monthly Incentives</li>
+            <li>✅ Access to members-only discussions</li>
+            <li>✅ Priority access to shared barter opportunities</li>
+            <li>✅ Small Token Allocation</li>
+            <li>✅ Profile listed under "Active Contributors"</li>
+          </ul>
+          <!-- <button class="select-plan" data-plan="Monthly">Select Plan</button> -->
+        </div>
+
+        <div class="plan quarterly">
+          <h3>Quarterly Subscription</h3>
+          <p class="price">₦10,000 worth of barter value</p>
+          <button class="select-plan" data-plan="Quarterly">Select Plan</button>
+          <ul>
+            <li>✅ Everything in the Monthly Package</li>
+            <li>✅ Ability to barter your Token</li>
+            <li>✅ Upgraded Portfolio Profile</li>
+            <li>✅ Exclusive barter networking sessions</li>
+            <li>✅ Access to training programs</li>
+            <li>✅ Early access to trade opportunities</li>
+          </ul>
+          <!-- <button class="select-plan" data-plan="Quarterly">Select Plan</button> -->
+        </div>
+
+        <div class="plan annual">
+          <h3>Annual Subscription</h3>
+          <p class="price">₦50,000 worth of barter value</p>
+          <button class="select-plan" data-plan="Annual">Select Plan</button>
+          <ul>
+            <li>✅ Everything in the Quarterly Package</li>
+            <li>✅ Guaranteed spot at the Annual Barter Fair</li>
+            <li>✅ Opportunity to be on the Board of Decision Makers</li>
+            <li>✅ VIP Access to premium barter trade opportunities</li>
+            <li>✅ Full training program access</li>
+            <li>✅ Certificate of Recognition</li>
+          </ul>
+          <!-- <button class="select-plan" data-plan="Annual">Select Plan</button> -->
+        </div>
+      </div>
+
+      <!-- Membership Form -->
       <form
         method="post"
         name="membershipForm"
@@ -178,6 +226,19 @@
         <button type="button" class="close-btn">&times;</button>
 
         <h2>Membership Registration</h2>
+        <!-- Membership Category Dropdown -->
+        <div class="form-group">
+          <label for="membershipCategory">Membership Category</label>
+          <select
+            id="membershipCategory"
+            name="membership_category"
+            class="form-input"
+          >
+            <option value="Monthly">Monthly</option>
+            <option value="Quarterly">Quarterly</option>
+            <option value="Annual">Annual</option>
+          </select>
+        </div>
 
         <div class="form-group">
           <label for="full-name">Full Name</label>
@@ -254,10 +315,9 @@
               accurate to the best of my knowledge.
             </span>
           </label>
-
           <div
             class="g-recaptcha"
-            data-sitekey="6LeRvQMrAAAAACjCbRLdUzK-4pVR5x_kyejEZtfx"
+            data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
           ></div>
         </div>
         <input type="hidden" id="declaration-text" name="declaration-text" />
@@ -270,18 +330,35 @@
       <div id="successModal" class="modal">
         <div class="modal-content">
           <h2>🎉 Registration Successful!</h2>
-          <p>Thank you! Your form has been submitted successfully.</p>
+          <p>
+            Thank you! Your form has been submitted successfully. A welcome
+            email will get to you shortly from the Spogah Community coordinator
+          </p>
           <button id="closeModal" class="modal-btn">OK</button>
         </div>
       </div>
     </section>
 
     <!-- Marketplace Section -->
-    <section id="marketplace">
-      <h2>Marketplace</h2>
-      <p>
-        Engage in ethical trade and barter within our self-sustaining ecosystem.
-      </p>
+    <section id="marketplace" class="hero marketplace">
+      <video autoplay muted loop class="marketplace-video">
+        <source src="assets/videos/marketplace-1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="hero-content">
+        <h1>Marketplace</h1>
+        <p>
+          Engage in ethical trade and barter within our self-sustaining
+          ecosystem.
+        </p>
+        <a
+          class="btn"
+          href="https://facebook.com/groups/1714797298921357/?mibextid=rS40aB7S9Ucbxw6v"
+          target="_blank"
+        >
+          Register
+        </a>
+      </div>
     </section>
 
     <!-- Online Learning Hub Section -->
@@ -343,7 +420,12 @@
     </footer>
 
     <script src="script.js"></script>
-
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof grecaptcha !== "undefined") {
+          grecaptcha.render("g-recaptcha");
+        }
+      });
+    </script>
   </body>
 </html>

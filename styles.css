@@ -2,33 +2,63 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  /* padding: 0; */
+  padding-top: 60px; /* Adjust based on the height of your header */
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
 /* Navigation Styles */
 header {
-  background: #333;
-  color: #fff;
-  padding: 15px 0;
-  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white; /* Ensure visibility */
+  opacity: 0.8;
+  z-index: 1000; /* Keeps it above other elements */
+  padding: 10px 0; /* Adjust spacing */
 }
 
 nav ul {
+  display: flex;
+  justify-content: center;
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 nav ul li {
-  display: inline;
   margin: 0 15px;
 }
 
 nav ul li a {
-  color: #fff;
   text-decoration: none;
-  font-size: 16px;
+  color: black;
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block; /* Prevents text shifting */
+}
+
+/* Hover Effect */
+nav ul li a:hover {
+  color: #007bff; /* Change to your preferred color */
+  transform: scale(1.1); /* Slightly enlarges the link */
+}
+
+/* Optional: Underline Animation */
+nav ul li a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #007bff; /* Same as hover color */
+  transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
 }
 
 /* Hero Section Styles */
@@ -323,6 +353,65 @@ h2 {
   margin-bottom: 2rem;
 }
 
+/*memberships plans styling */
+.membership-plans {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.plan {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px; /* Fixed width for uniformity */
+  flex: 1 1 300px; /* Allows flexibility in wrapping */
+  max-width: 350px;
+}
+
+.plan h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.plan .price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.plan ul {
+  text-align: left;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.plan ul li {
+  padding: 5px 0;
+}
+
+.select-plan {
+  background: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .membership-plans {
+    flex-direction: column; /* Stacks on smaller screens */
+    align-items: center;
+  }
+}
+
 /* Form Container */
 #membershipForm {
   position: fixed;
@@ -547,6 +636,8 @@ h2 {
     transform: rotate(360deg);
   }
 }
+
+/* marketplace Section Styles */
 
 /* Contact Section Styles */
 .contact {

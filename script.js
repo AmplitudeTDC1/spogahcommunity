@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const declarationCheckbox = document.getElementById("declaration");
   const submitButton = document.getElementById("submit");
   const generatedCodeInput = document.getElementById("generated-code");
+  const membershipCategorySelect =
+    document.getElementById("membershipCategory");
   const successModal = document.getElementById("successModal");
   const closeModalBtn = document.getElementById("closeModal");
 
@@ -40,15 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize form
   function initForm() {
-    // Generate reference code
     generateReferenceCode();
-
-    // Set initial submit button state
     if (declarationCheckbox && submitButton) {
       submitButton.disabled = !declarationCheckbox.checked;
     }
-
-    // Set up event listeners
     setupEventListeners();
   }
 
@@ -64,14 +61,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Form visibility control
-  function showForm() {
+  // Show form with selected membership category
+  function showForm(category = "Monthly") {
+    if (membershipCategorySelect) {
+      membershipCategorySelect.value = category; // Set the selected category
+    }
+
     membershipForm.style.display = "block";
     setTimeout(() => {
       membershipForm.classList.add("visible");
     }, 10);
   }
 
+  // Hide form
   function hideForm() {
     membershipForm.classList.remove("visible");
     setTimeout(() => {
@@ -81,9 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Event listeners
   function setupEventListeners() {
-    // Show form
+    // Show form on "Join" button click
     if (joinBtn) {
-      joinBtn.addEventListener("click", showForm);
+      joinBtn.addEventListener("click", () => showForm());
     }
 
     // Hide form
@@ -91,13 +93,20 @@ document.addEventListener("DOMContentLoaded", function () {
       closeBtn.addEventListener("click", hideForm);
     }
 
+    // Membership plan buttons - dynamically set category
+    document.querySelectorAll(".select-plan").forEach((button) => {
+      button.addEventListener("click", function () {
+        const selectedCategory = this.getAttribute("data-plan") || "Monthly"; // Get category from button
+        showForm(selectedCategory); // Pass it to the form
+      });
+    });
+
     // Name input updates
     if (fullNameInput && namePlaceholder) {
       fullNameInput.addEventListener("input", function () {
         const name = this.value.trim() || "________";
         namePlaceholder.textContent = name;
 
-        // Update the hidden input field with the declaration text
         const declarationTextInput =
           document.getElementById("declaration-text");
         if (declarationTextInput) {
@@ -118,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
       membershipForm.addEventListener("submit", handleSubmit);
     }
 
-    // Close modal
+    // Close success modal
     if (closeModalBtn) {
       closeModalBtn.addEventListener("click", function () {
         successModal.classList.remove("show");
@@ -130,7 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // Ensure the declaration text is updated before submission
     const name = fullNameInput.value.trim() || "________";
     const declarationText = `I, ${name}, hereby declare that the information provided above is true and accurate to the best of my knowledge. I understand and agree to abide by the rules and regulations of the Spogah Barter Community.`;
 
@@ -141,7 +149,6 @@ document.addEventListener("DOMContentLoaded", function () {
       submitButton.innerHTML = '<span class="spinner"></span> Submitting...';
     }
 
-    // Validate reCAPTCHA
     const recaptchaResponse = grecaptcha.getResponse();
     if (!recaptchaResponse) {
       alert("Please verify you are not a bot!");
@@ -152,17 +159,16 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Create a FormData object and manually append necessary fields
     const formData = new FormData(membershipForm);
-    formData.set("declaration-text", declarationText); // Ensure it's included
-    formData.append("g-recaptcha-response", recaptchaResponse); // Add reCAPTCHA token
+    formData.set("declaration-text", declarationText);
+    formData.append("g-recaptcha-response", recaptchaResponse);
 
     fetch(scriptURL, { method: "POST", body: formData })
       .then((response) => {
         if (!response.ok) throw new Error("Network response was not ok");
         showSuccess();
         resetForm();
-        grecaptcha.reset(); // Reset reCAPTCHA after successful submission
+        grecaptcha.reset();
       })
       .catch((error) => {
         console.error("Error!", error.message);
